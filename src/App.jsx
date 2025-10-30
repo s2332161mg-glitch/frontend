@@ -43,15 +43,15 @@ function App() {
   const [questHistory, setQuestHistory] = useState([]);
   const [activeQuestId, setActiveQuestId] = useState(null);
 
-  // --- ここからが新しい部分 ---
-  // アプリ起動時に一度だけ履歴をサーバーから取得する
+  
+  
   useEffect(() => {
     fetch('http://localhost:8081/history')
       .then(res => res.json())
       .then(data => setQuestHistory(data))
       .catch(err => console.error("履歴の取得に失敗:", err));
   }, []);
-  // --- ここまでが新しい部分 ---
+  
 
   const onNodesChange = useCallback((changes) => setNodes((nds) => applyNodeChanges(changes, nds)), []);
   const onEdgesChange = useCallback((changes) => setEdges((eds) => applyEdgeChanges(changes, eds)), []);
@@ -115,19 +115,19 @@ function App() {
     setIsLoading(true);
     setActiveQuest(null);
     try {
-      // サーバー側で保存されるので、フロント側での履歴追加は不要に
+      
       await fetch(`http://localhost:8081/generate-quest?question=${encodeURIComponent(question)}`);
 
-      // 履歴を再取得してサイドバーを更新
+      
       const historyResponse = await fetch('http://localhost:8081/history');
       const newHistory = await historyResponse.json();
       setQuestHistory(newHistory);
 
-      // 作成された最新のクエスト（履歴の先頭）を表示する
+      
       if (newHistory.length > 0) {
         handleSelectQuest(newHistory[0].id);
       }
-      setQuestion(''); // 入力欄をクリア
+      setQuestion(''); 
 
     } catch (error) {
       console.error('通信エラー:', error);
