@@ -20,7 +20,7 @@ body {
   min-height: 100vh;
 }
 
-#root { /* This overrides the previous #root styles */
+#root { 
   width: auto;
   height: auto;
   margin: 0 auto;
