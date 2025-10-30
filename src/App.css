@@ -140,7 +140,7 @@ button:disabled {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Make default nodes invisible, keeping custom nodes */
+
 .react-flow__node {
   background: transparent !important;
   border: none !important;
